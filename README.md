@@ -3,7 +3,7 @@
 ##要件(JavaScript非同期通信)
 ###開発環境
 - OS:Windows10
-- IDE:Netbeans 
+- IDE:Netbeans
 
 ##機能要件
 - ブラウザ側からサーバ側にリクエスト(郵便番号をわたす)。

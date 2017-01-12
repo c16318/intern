@@ -1,0 +1,5 @@
+.cvsignore
+.project
+.tomcatplugin
+.classpath
+/work/
