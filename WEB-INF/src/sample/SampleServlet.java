@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class SampleServlet extends HttpServlet {
 
+
 	/* (非 Javadoc)
 	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
 	 */
@@ -28,6 +29,9 @@ public class SampleServlet extends HttpServlet {
 		OutputStream os = resp.getOutputStream();
 		os.write("test".getBytes());
 		os.flush();
+
+
+		//resp.setContentType("application/json;charset=UTF-8");
 
 
 

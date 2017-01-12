@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>HTML 5 complete</title>
+<title>HTML 5</title>
 <!--  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -16,18 +16,20 @@
 
 				var address = $('#q').val() + $('#q2').val();
 				console.log(address);
+
 				$.ajax({
 				    url: "http://localhost:8080/intern/sample",
 				    type: 'POST',
-				    dataType: 'xml',
-				    timeout: 1000,
-				    data:address,
+				    // dataType: 'xml',
+				    data: { "zipcode": address },
 				    error: function(){
 				        alert("Error");
 				    },
 				    success: function(xml){
 				        // do something with xml
+				        alert("OK")
 				    }
+
 				});
 
 		});
@@ -35,13 +37,13 @@
 </script>
 
 </head>
-<body>
-<div class="container">
-<form >
-<label>郵便番号</lable>
-<input type="text"style="width:50px;"  name="q" id="q">-<input type="text" style="width:80px;" name="q2" id="q2">
+	<body>
+		<div class="container">
+			<form >
+				<label>郵便番号</lable>
+				<input type="text"style="width:50px;"  name="q" id="q">-<input type="text" style="width:80px;" name="q2" id="q2">
 
-</form>
-</div>
-</body>
+			</form>
+		</div>
+	</body>
 </html>
