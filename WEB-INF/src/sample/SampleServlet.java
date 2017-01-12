@@ -28,5 +28,8 @@ public class SampleServlet extends HttpServlet {
 		OutputStream os = resp.getOutputStream();
 		os.write("test".getBytes());
 		os.flush();
+
+
+
 	}
 }
