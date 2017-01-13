@@ -5,45 +5,77 @@
 <title>HTML 5</title>
 <!--  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css" type="text/css">
 
 
 <script>
 
-	$(function(){
-			$('#q2').keyup(function(){
-				<!--console.log($('#q').val());-->
+$(function(){
 
-				var address = $('#q').val() + $('#q2').val();
-				console.log(address);
+	function test(){
+		console.log("test");
+		var address1 = $('#q').val()
+		var address2 = $('#q2').val()
 
-				$.ajax({
-				    url: "http://localhost:8080/intern/sample",
-				    type: 'POST',
-				    // dataType: 'xml',
-				    data: { "zipcode": address },
-				    error: function(){
-				        alert("Error");
-				    },
-				    success: function(xml){
-				        // do something with xml
-				        alert("OK")
-				    }
 
-				});
+		var len1 = address1.length;
+		var len2 = address2.length;
 
-		});
+
+		if(address1.match( /[^0-9.,-]+/ ) ||address2.match( /[^0-9.,-]+/ ) ) {
+			alert("半角数字で入力して下さい。");
+			return false;
+		}
+
+
+		//if(len1 == 3 && len2 == 4){
+			var address = address1 + address2;
+			console.log(address);
+
+			$.ajax({
+				url: "http://localhost:8080/intern/sample",
+				type: 'POST',
+				dataType: 'text',
+				data: { "zipcode": address },
+				error: function(){
+				    alert("Error");
+				},
+				success: function(text){
+					//console.log(text);
+					$('#id').html(text);
+
+				}
+			});
+
+		//}
+	}
+
+	$("#q,#q2").keyup(function(){
+		test();
 	});
+
+	$("#button").click(function(){
+		test();
+		alert($('#q').val().length +$('#q2').val().length );
+	});
+
+});
 </script>
 
 </head>
+
+
 	<body>
 		<div class="container">
 			<form >
 				<label>郵便番号</lable>
-				<input type="text"style="width:50px;"  name="q" id="q">-<input type="text" style="width:80px;" name="q2" id="q2">
+				<input type="text" name="q" id="q">-<input type="text" name="q2" id="q2">
+				<input type="button" id="button" value="検索">
 
 			</form>
 		</div>
+		<div id="id"> </div>
+
 	</body>
 </html>
